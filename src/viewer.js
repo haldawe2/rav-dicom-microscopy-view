@@ -163,10 +163,6 @@ function _getClient (clientMapping, sopClassUID) {
   return clientMapping[sopClassUID]
 }
 
-export function testViewerLog () {
-  console.log('++++++++++++++++++++++++++++++++ stuff works')
-}
-
 function _getInteractionBindingCondition (bindings) {
   const BUTTONS = {
     left: 1,

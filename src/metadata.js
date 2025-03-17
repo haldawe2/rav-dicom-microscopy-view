@@ -570,7 +570,12 @@ class Segmentation extends SOPClass {
   }
 }
 
+function testViewerLog () {
+  console.log('++++++++++++++++++++++++++++++++ stuff works')
+}
+
 export {
+  testViewerLog,
   Comprehensive3DSR,
   formatMetadata,
   groupMonochromeInstances,
