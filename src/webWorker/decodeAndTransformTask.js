@@ -30,6 +30,8 @@ function _handler (data, doneCallback) {
     iccProfiles
   } = data.data
 
+  console.log('+++++++++++++++ data at _handler (when trying to decode frames): ', data)
+
   _checkImageTypeAndDecode(
     {
       bitsAllocated,
@@ -95,6 +97,8 @@ async function _checkImageTypeAndDecode ({
   pixelRepresentation,
   frame
 }) {
+  console.log('++++ _checkImageTypeAndDecode data;  bitsAllocated: ', bitsAllocated, ' columns: ', columns, ' rows: ', rows,
+  ' samplesPerPixel: ', samplesPerPixel, ' pixelRepresentation: ', pixelRepresentation, ' frame: ', frame)
   let byteArray = new Uint8Array(frame)
   const imageTypeObject = imageType(byteArray)
 
