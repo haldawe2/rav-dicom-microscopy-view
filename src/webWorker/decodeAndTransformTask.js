@@ -107,6 +107,7 @@ async function _checkImageTypeAndDecode ({
   ' samplesPerPixel: ', samplesPerPixel, ' pixelRepresentation: ', pixelRepresentation, ' frame: ', frame)
   let byteArray = new Uint8Array(frame)
   const imageTypeObject = imageType(byteArray)
+  console.log('imageTypeObject: ', imageTypeObject)
 
   const toHex = function (value) {
     return value.toString(16).padStart(2, '0').toUpperCase()
@@ -114,6 +115,7 @@ async function _checkImageTypeAndDecode ({
 
   let mediaType
   if (imageTypeObject == null) {
+    console.log('(imageTypeObject == null) if executed')
     /**
      * This hack is required to recognize JPEG 2000 bit streams that are zero
      * padded, i.e., that have a "00" byte after the JPEG 2000 End of Image
@@ -165,8 +167,10 @@ async function _checkImageTypeAndDecode ({
   }
 
   console.debug(`decode compressed frame with media type "${mediaType}"`)
+  console.log('up to debug log works fine, right before _decode')
 
   const { frameBuffer, frameInfo } = await _decode(mediaType, byteArray)
+  console.log('check log to see if it decodes correctly');
   if (frameInfo.bitsPerSample !== bitsAllocated) {
     throw new Error(
       'Frame does not have expected Bits Allocated: ' +
@@ -212,7 +216,7 @@ async function _checkImageTypeAndDecode ({
       `${frameBuffer.length} instead of ${length}.`
     )
   }
-
+  console.log('frameBuffer, end of function!!!!! ', frameBuffer);
   return frameBuffer
 }
 
