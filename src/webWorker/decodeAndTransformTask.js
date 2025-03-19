@@ -167,7 +167,7 @@ async function _checkImageTypeAndDecode ({
   }
 
   console.debug(`decode compressed frame with media type "${mediaType}"`)
-  console.log('up to debug log works fine, right before _decode')
+  console.log('up to debug log works fine, right before _decode ')
 
   const { frameBuffer, frameInfo } = await _decode(mediaType, byteArray)
   console.log('check log to see if it decodes correctly');
