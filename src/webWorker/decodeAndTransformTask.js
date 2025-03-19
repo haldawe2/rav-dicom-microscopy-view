@@ -42,16 +42,22 @@ function _handler (data, doneCallback) {
       frame
     }
   ).then((decodedFrame) => {
+    console.log('++++ after the function!!! _checkImageTypeAndDecode data;  bitsAllocated: ', bitsAllocated, ' columns: ', columns, ' rows: ', rows,
+    ' samplesPerPixel: ', samplesPerPixel, ' pixelRepresentation: ', pixelRepresentation, ' frame: ', frame)
+    console.log('decodedFrame: ', decodedFrame)
     if (iccProfiles != null && iccProfiles.length > 0) {
+      console.log('executing first if (iccProfiles != null && iccProfiles.length > 0)')
       // Only instantiate the transformer once and cache it for reuse.
       if (transformerColor === undefined) {
         transformerColor = new ColorTransformer(metadata, iccProfiles)
       }
+      console.log('+-+-+-+- transformerColor: ', transformerColor)
       // Apply ICC color transform
       transformerColor.transform(
         sopInstanceUID,
         decodedFrame
       ).then((transformedFrame) => {
+        console.log('get to transform the color fine')
         /*
          * Invoke the callback with our result and pass the frameData in the
          * transferList to move it to UI thread without making a copy.
@@ -97,7 +103,7 @@ async function _checkImageTypeAndDecode ({
   pixelRepresentation,
   frame
 }) {
-  console.log('++++ _checkImageTypeAndDecode data;  bitsAllocated: ', bitsAllocated, ' columns: ', columns, ' rows: ', rows,
+  console.log('++++ strating values of _checkImageTypeAndDecode data;  bitsAllocated: ', bitsAllocated, ' columns: ', columns, ' rows: ', rows,
   ' samplesPerPixel: ', samplesPerPixel, ' pixelRepresentation: ', pixelRepresentation, ' frame: ', frame)
   let byteArray = new Uint8Array(frame)
   const imageTypeObject = imageType(byteArray)
