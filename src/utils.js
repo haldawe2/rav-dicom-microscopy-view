@@ -505,7 +505,7 @@ function _getUnitSuffix (view) {
 
   const nominalCount = minWidth * pointResolution
   let suffix = ''
-
+  console.debug('view', view);
   if (nominalCount < 0.001) {
     suffix = 'μm'
     pointResolution *= 1000000
