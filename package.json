@@ -37,7 +37,9 @@
   },
   "scripts": {
     "test": "standard 'src/*.js' && jest --silent",
-    "build": "npm run webpack:bundle && npm run webpack:dynamic-import",
+    "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "dev": "webpack --watch",
     "prepublishOnly": "npm run build",
     "generateStaticSite": "npm run build && cp -R ./dist ./examples",
     "generateDocs": "jsdoc -c ./jsdoc_conf.json",

@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 // The big difference between this and the dynamic-import version is that
 // the dynamic import version does not bundle the WASM modules into the WebWorker file
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   context,
   stats: {
     children: true
@@ -71,10 +71,6 @@ module.exports = {
     asyncWebAssembly: true
   },
   optimization: {
-    minimizer: [
-      new TerserPlugin({
-        parallel: true
-      })
-    ]
+    minimizer: false
   }
 }
